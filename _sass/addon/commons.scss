@@ -2,7 +2,7 @@
   The common styles
 */
 
-@import url('https://fonts.googleapis.com/css2?family=Gugi&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap');
 
 html {
   @media (prefers-color-scheme: light) {
@@ -36,7 +36,7 @@ body {
     env(safe-area-inset-bottom) env(safe-area-inset-left);
   color: var(--text-color);
   -webkit-font-smoothing: antialiased;
-  font-family: 'Gugi';
+  font-family: 'Nanum Pen Script';
   line-height: 1.75;
 }
 
