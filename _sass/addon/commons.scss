@@ -2,7 +2,12 @@
   The common styles
 */
 
-@import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap');
+@font-face {
+    font-family: 'KyoboHand';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/KyoboHand.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 
 html {
   @media (prefers-color-scheme: light) {
@@ -36,7 +41,7 @@ body {
     env(safe-area-inset-bottom) env(safe-area-inset-left);
   color: var(--text-color);
   -webkit-font-smoothing: antialiased;
-  font-family: 'Nanum Pen Script';
+  font-family: 'KyoboHand';
   line-height: 1.75;
 }
 
