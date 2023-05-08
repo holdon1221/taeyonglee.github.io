@@ -2,13 +2,6 @@
   The common styles
 */
 
-@font-face {
-    font-family: 'KyoboHand';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/KyoboHand.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-
 html {
   @media (prefers-color-scheme: light) {
     &:not([data-mode]),
@@ -41,7 +34,7 @@ body {
     env(safe-area-inset-bottom) env(safe-area-inset-left);
   color: var(--text-color);
   -webkit-font-smoothing: antialiased;
-  font-family: 'KyoboHand';
+  font-family: $font-family-base;
   line-height: 1.75;
 }
 
