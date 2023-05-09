@@ -1,8 +1,10 @@
 f = @(x,u) [x(1)*u+x(2)^2+u; -x(1)*x(2)*u+x(2)^3-x(1)];
 [t,y] = ode45(@(t,x) f(x,1), [0:0.05:0.7], [0,0]);
 
+filename = "example_movie.gif";
+
 for i = 1:length(t)
-    figure("Position", [0,0,1480,1080])
+    figure("Position", [0,0,1400,1050])
 
     hold on;
     ax = gca;
@@ -22,8 +24,16 @@ for i = 1:length(t)
     ylabel("$y$", "Interpreter", "latex");
     
     set(findall(gcf,'-property','FontSize'),'FontSize',18);
+    set(gcf, 'color', 'white');
 
-    exportgraphics(gcf,'example_movie.gif','Append',true);
+    frame = getframe(1);
+    im = frame2im(frame);
+    [imind,cm] = rgb2ind(im,256);
+    if i == 1
+         imwrite(imind,cm,filename,'gif', 'Loopcount',inf);
+    else
+         imwrite(imind,cm,filename,'gif','WriteMode','append');
+    end
 
     close gcf;
 end
@@ -31,8 +41,11 @@ end
 
 %%
 
+filename = "counterexample_movie.gif";
+
 for k = 1:10
-    figure("Position", [0,0,1480,1080])
+    figure("Position", [0,0,1400,1050])
+
     hold on;
     ax = gca;
     ax.XAxisLocation = "origin";
@@ -48,16 +61,26 @@ for k = 1:10
     axis([0,1,0,0.6])
     
     set(findall(gcf,'-property','FontSize'),'FontSize',18);
+    set(gcf, 'color', 'white');
 
-    exportgraphics(gcf,'counterexample_movie.gif','Append',true);
+    frame = getframe(1);
+    im = frame2im(frame);
+    [imind,cm] = rgb2ind(im,256);
+    if k == 1
+         imwrite(imind,cm,filename,'gif','Loopcount',inf);
+    else
+         imwrite(imind,cm,filename,'gif','WriteMode','append');
+    end
 
     close gcf;
 end
 
 %%
 
+filename = "counterexample_I_movie.gif";
+
 for k = 1:10
-    figure("Position", [0,0,1480,1080])
+    figure("Position", [0,0,1400,1050])
     hold on;
     ax = gca;
     ax.XAxisLocation = "origin";
@@ -75,8 +98,16 @@ for k = 1:10
     axis([0,1,0,0.3])
     
     set(findall(gcf,'-property','FontSize'),'FontSize',18);
+    set(gcf, 'color', 'white');
 
-    exportgraphics(gcf,'counterexample_I_movie.gif','Append',true);
+    frame = getframe(1);
+    im = frame2im(frame);
+    [imind,cm] = rgb2ind(im,256);
+    if k == 1
+         imwrite(imind,cm,filename,'gif','Loopcount',inf);
+    else
+         imwrite(imind,cm,filename,'gif','WriteMode','append');
+    end
 
     close gcf;
 end
