@@ -1,67 +1,32 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset
-      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
-
-
-<url>
-  <loc>https://holdon1221.github.io/</loc>
-  <lastmod>2023-05-08T06:20:01+00:00</lastmod>
-  <priority>1.00</priority>
-</url>
-<url>
-  <loc>https://holdon1221.github.io/categories/</loc>
-  <lastmod>2023-05-08T06:20:01+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://holdon1221.github.io/tags/</loc>
-  <lastmod>2023-05-08T06:20:01+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://holdon1221.github.io/archives/</loc>
-  <lastmod>2023-05-08T06:20:01+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://holdon1221.github.io/about/</loc>
-  <lastmod>2023-05-08T06:20:01+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://holdon1221.github.io/posts/</loc>
-  <lastmod>2023-05-08T06:20:01+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://holdon1221.github.io/tags/epidemiology/</loc>
-  <lastmod>2023-05-08T06:20:01+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://holdon1221.github.io/tags/infectious-disease-model/</loc>
-  <lastmod>2023-05-08T06:20:01+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://holdon1221.github.io/tags/mathematical-model/</loc>
-  <lastmod>2023-05-08T06:20:01+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://holdon1221.github.io/categories/study/</loc>
-  <lastmod>2023-05-08T06:20:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://holdon1221.github.io/categories/epidemiology/</loc>
-  <lastmod>2023-05-08T06:20:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-
-
-</urlset>
+    ---
+    layout: null
+    sitemap:
+      exclude: 'yes'
+    ---
+    <?xml version="1.0" encoding="UTF-8"?>
+    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+      {% for post in site.posts %}
+        {% unless post.published == false %}
+        <url>
+          <loc>{{ site.url }}{{ post.url }}</loc>
+          {% if post.sitemap.lastmod %}
+            <lastmod>{{ post.sitemap.lastmod | date: "%Y-%m-%d" }}</lastmod>
+          {% elsif post.date %}
+            <lastmod>{{ post.date | date_to_xmlschema }}</lastmod>
+          {% else %}
+            <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
+          {% endif %}
+          {% if post.sitemap.changefreq %}
+            <changefreq>{{ post.sitemap.changefreq }}</changefreq>
+          {% else %}
+            <changefreq>monthly</changefreq>
+          {% endif %}
+          {% if post.sitemap.priority %}
+            <priority>{{ post.sitemap.priority }}</priority>
+          {% else %}
+            <priority>0.5</priority>
+          {% endif %}
+        </url>
+        {% endunless %}
+      {% endfor %}
+    </urlset>
