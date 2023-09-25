@@ -162,6 +162,11 @@ defaults:
       path: assets/js/dist
     values:
       swcache: true
+  - scope:
+      type: posts
+    values:
+      # https://applause-button.com/
+      applause_button: true
 
 sass:
   style: compressed
